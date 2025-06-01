@@ -1,0 +1,10 @@
+br\academic\utils\events\AcademicFair.class
+br\academic\utils\events\Workshop.class
+br\academic\utils\events\Course.class
+br\academic\utils\participant\Professor.class
+br\academic\utils\participant\External.class
+br\academic\utils\participant\Person.class
+br\academic\utils\events\Events.class
+br\academic\utils\participant\Student.class
+br\academic\core\App.class
+br\academic\utils\events\Lecture.class
