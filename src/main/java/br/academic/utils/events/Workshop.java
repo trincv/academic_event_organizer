@@ -19,10 +19,9 @@ public class Workshop extends Events {
     public boolean SubscribePerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
-        if(!(subscribed < max_participants)) return false; 
+        if(!(registered.size() < max_participants)) return false; 
         Person p = (Person) obj;
         registered.put(p.getId(), p);
-        subscribed += 1;
         return true;
     }
 

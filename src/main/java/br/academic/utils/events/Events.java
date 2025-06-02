@@ -8,7 +8,6 @@ public abstract class Events {
     private String date;
     private String place;
     protected int max_participants;
-    protected int subscribed;
     private String description;
     protected HashMap<Integer, Person> registered = new HashMap<>();
 
@@ -21,7 +20,7 @@ public abstract class Events {
     }
 
     public void displayEvent() {
-        System.out.print(title + "\n" + date + "\n" + place + "\n" + max_participants + "\n" + subscribed + "\n" + description + "\n" );
+        System.out.print(title + "\n" + date + "\n" + place + "\n" + max_participants + "\n" + registered.size() + "\n" + description + "\n" );
     }
 
     public abstract boolean SubscribePerson(Object obj);

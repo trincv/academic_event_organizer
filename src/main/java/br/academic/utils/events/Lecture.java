@@ -19,10 +19,16 @@ public class Lecture extends Events {
     }
 
     public boolean SubscribePerson(Object obj) {
+
+        if(!(obj instanceof Person)) return false;
+        if(!(registered.size() < max_participants)) return false; 
+        Person p = (Person) obj;
+        registered.put(p.getId(), p);
         return true;
     }
-
     public void getAllSubscribed() {
-        System.out.print(" ");
+        for(Integer key : registered.keySet()) {
+            registered.get(key).display();
+        }
     }
 }
