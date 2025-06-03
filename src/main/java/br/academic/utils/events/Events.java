@@ -19,8 +19,8 @@ public abstract class Events {
         this.description = description;
     }
 
-    public String getTitle(Object o) {
-        return o.title;
+    public String getTitle() {
+        return title;
     }
 
     public void displayEvent() {
