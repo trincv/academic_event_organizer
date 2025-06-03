@@ -4,21 +4,22 @@ import br.academic.utils.participant.*;
 import java.util.HashMap;
 
 public class Lecture extends Events {
-
     private String speaker;
+    private int durationLecture;
 
-    public Lecture(String speaker, String title, String date, String place, int max_participants, String description) {
+    public Lecture(String title, String date, String place, int max_participants, String speaker, int durationLecture, String description) {
         super(title, date, place, max_participants, description);
         this.speaker = speaker;
+        this.durationLecture = durationLecture;
     }
 
     @Override
     public void displayEvent() {
-        System.out.println("Type: Lecture!\n" + "Speaker: " + speaker);
+        System.out.println("Type: Lecture!\n" + "Speaker: " + speaker + "\nDuration: " + durationLecture);
         super.displayEvent();
     }
 
-    public boolean SubscribePerson(Object obj) {
+    public boolean AddPerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
         if(!(registered.size() < max_participants)) return false; 

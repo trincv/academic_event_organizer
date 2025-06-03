@@ -4,19 +4,22 @@ import br.academic.utils.participant.*;
 import java.util.HashMap;
 
 public class AcademicFair extends Events {
+    private boolean openToPublic;
+    private int numberOfOrganizations;
 
-
-    public AcademicFair(String title, String date, String place, int max_participants, String description) {
+    public AcademicFair(String title, String date, String place, int max_participants, boolean openToPublic, int numberOfOrganizations, String description) {
         super(title, date, place, max_participants, description);
+        this.openToPublic = openToPublic;
+        this.numberOfOrganizations = numberOfOrganizations;
     }
 
     @Override
     public void displayEvent() {
-        System.out.println("Type: Academic fair!");
+        System.out.println("Type: Academic fair!\n" + "Open to public: " + openToPublic + "\nNumber of organizations: " + numberOfOrganizations);
         super.displayEvent();
     }
     
-    public boolean SubscribePerson(Object obj) {
+    public boolean AddPerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
         if(!(registered.size() < max_participants)) return false; 

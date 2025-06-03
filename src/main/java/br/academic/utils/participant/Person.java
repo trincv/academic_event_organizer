@@ -23,7 +23,7 @@ public abstract class Person {
         return ID;
     }
     public void display() {
-        System.out.println(name + " / " + email + " / " + ID);
+        System.out.println("Name: "+ name + " / " + "Email: " + email + " / " + "ID: " + ID);
     }
 
 }

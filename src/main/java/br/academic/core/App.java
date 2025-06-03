@@ -17,11 +17,11 @@ public class App
         // e1.display();
         // p1.display();
     
-        Workshop w1 = new Workshop("Luz e Energia", "27/10/2010", "Praça da Sé", 50, "No description added");
+        Workshop w1 = new Workshop("Luz e Energia", "27/10/2010", "Praça da Sé", 50, "Enxada, pedra e lápis", "Luiz Magalhães", "No descrition added");
 
         // w1.displayEvent();
-        w1.SubscribePerson(s1);
-        w1.SubscribePerson(s2);
+        w1.AddPerson(s1);
+        w1.AddPerson(s2);
 
         w1.displayEvent();
 

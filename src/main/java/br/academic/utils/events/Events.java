@@ -20,10 +20,10 @@ public abstract class Events {
     }
 
     public void displayEvent() {
-        System.out.print(title + "\n" + date + "\n" + place + "\n" + max_participants + "\n" + registered.size() + "\n" + description + "\n" );
+        System.out.print("Title: " + title + "\n" + "Date: " + date + "\n" + "Place: " + place + "\n" + "Total participants: " + max_participants + "\n" + "Current subscribed: " + registered.size() + "\n" + "Description: " + description + "\n" );
     }
 
-    public abstract boolean SubscribePerson(Object obj);
+    public abstract boolean AddPerson(Object obj);
 
     public abstract void getAllSubscribed();
 
