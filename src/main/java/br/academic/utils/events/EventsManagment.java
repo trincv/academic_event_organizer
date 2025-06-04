@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package br.academic.utils.events;
 
 import java.util.HashMap;
