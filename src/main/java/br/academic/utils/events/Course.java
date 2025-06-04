@@ -5,9 +5,9 @@ import java.util.HashMap;
 
 public class Course extends Events {
     private int durationCourse;
-    private String professorCourse; 
+    private Professor professorCourse; 
 
-    public Course(String title, String date, String place, int max_participants, int durationCourse, String professorCourse, String description) {
+    public Course(String title, String date, String place, int max_participants, int durationCourse, Professor professorCourse, String description) {
         super(title, date, place, max_participants, description);
         this.durationCourse = durationCourse;
         this.professorCourse = professorCourse;
@@ -15,14 +15,14 @@ public class Course extends Events {
 
     @Override
     public void displayEvent() {
-        System.out.println("Type: Course!\n" + "Professor: " + professorCourse + "\nDuration: " + durationCourse);
+        System.out.println("Type: Course!\n" + "Professor: " + professorCourse.getName() + "\nDuration: " + durationCourse);
         super.displayEvent();
     }
 
     public boolean AddPerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
-        if(!(obj instanceof External)) return false;
+        if(!(obj instanceof Student)) return false;
         if(!(registered.size() < max_participants)) return false; 
         Person p = (Person) obj;
         registered.put(p.getId(), p);

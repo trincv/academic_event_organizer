@@ -19,6 +19,10 @@ public abstract class Events {
         this.description = description;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public void displayEvent() {
         System.out.print("Title: " + title + "\n" + "Date: " + date + "\n" + "Place: " + place + "\n" + "Total participants: " + max_participants + "\n" + "Current subscribed: " + registered.size() + "\n" + "Description: " + description + "\n" );
     }
