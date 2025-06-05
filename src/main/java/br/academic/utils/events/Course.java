@@ -7,8 +7,8 @@ public class Course extends Events {
     private int durationCourse;
     private Professor professorCourse; 
 
-    public Course(String title, String date, String place, int max_participants, int durationCourse, Professor professorCourse, String description) {
-        super(title, date, place, max_participants, description);
+    public Course(String title, String date, String place, int max_participants, int durationCourse, Professor professorCourse, String description, EventModel model) {
+        super(title, date, place, max_participants, description, model);
         this.durationCourse = durationCourse;
         this.professorCourse = professorCourse;
     }
@@ -25,7 +25,7 @@ public class Course extends Events {
         if(!(obj instanceof Student)) return false;
         if(!(registered.size() < max_participants)) return false; 
         Person p = (Person) obj;
-        registered.put(p.getId(), p);
+        registered.put(p.getCod(), p);
         return true;
     }
 

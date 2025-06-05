@@ -3,15 +3,15 @@ package br.academic.utils.participant;
 public abstract class Person {
     protected String name;
     protected String email;
-    protected int ID;
 
-    public Person(String name, String email, int ID) {
+    public Person(String name, String email) {
         this.name = name;
         this.email = email;
-        this.ID = ID;
     }
 
     public abstract String getCategory();
+
+    public abstract int getCod();
 
     public String getName() {
         return name;
@@ -19,11 +19,8 @@ public abstract class Person {
     public String getEmail() {
         return email;
     }
-    public int getId() {
-        return ID;
-    }
     public void display() {
-        System.out.println("Name: "+ name + " / " + "Email: " + email + " / " + "ID: " + ID);
+        System.out.println("Name: "+ name + " / " + "Email: " + email);
     }
 
 }

@@ -7,8 +7,8 @@ public class AcademicFair extends Events {
     private boolean openToPublic;
     private int numberOfOrganizations;
 
-    public AcademicFair(String title, String date, String place, int max_participants, boolean openToPublic, int numberOfOrganizations, String description) {
-        super(title, date, place, max_participants, description);
+    public AcademicFair(String title, String date, String place, int max_participants, boolean openToPublic, int numberOfOrganizations, String description, EventModel model) {
+        super(title, date, place, max_participants, description, model);
         this.openToPublic = openToPublic;
         this.numberOfOrganizations = numberOfOrganizations;
     }
@@ -22,9 +22,11 @@ public class AcademicFair extends Events {
     public boolean AddPerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
+        if(openToPublic == false)
+            if(!(obj instanceof Student)) return false;
         if(!(registered.size() < max_participants)) return false; 
         Person p = (Person) obj;
-        registered.put(p.getId(), p);
+        registered.put(p.getCod(), p);
         return true;
     }
 

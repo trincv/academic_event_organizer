@@ -8,8 +8,8 @@ public class Workshop extends Events {
     private String instructor;
 
 
-    public Workshop(String title, String date, String place, int max_participants, String toolsRequired, String instructor, String description) {
-        super(title, date, place, max_participants, description);
+    public Workshop(String title, String date, String place, int max_participants, String toolsRequired, String instructor, String description, EventModel model) {
+        super(title, date, place, max_participants, description, model);
         this.toolsRequired = toolsRequired;
         this.instructor = instructor;
     }
@@ -25,7 +25,7 @@ public class Workshop extends Events {
         if(!(obj instanceof Person)) return false;
         if(!(registered.size() < max_participants)) return false; 
         Person p = (Person) obj;
-        registered.put(p.getId(), p);
+        registered.put(p.getCod(), p);
         return true;
     }
 
