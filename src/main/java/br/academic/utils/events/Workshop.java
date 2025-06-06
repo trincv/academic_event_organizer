@@ -25,12 +25,12 @@ public class Workshop extends Events {
         if(!(obj instanceof Person)) return false;
         if(!(registered.size() < max_participants)) return false; 
         Person p = (Person) obj;
-        registered.put(p.getCod(), p);
+        registered.put(p.getCPF(), p);
         return true;
     }
 
     public void getAllSubscribed() {
-        for(Integer key : registered.keySet()) {
+        for(String key : registered.keySet()) {
             registered.get(key).display();
         }
     }

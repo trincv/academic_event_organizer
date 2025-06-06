@@ -10,7 +10,7 @@ public abstract class Events {
     private String place;
     protected int max_participants;
     private String description;
-    protected HashMap<Integer, Person> registered = new HashMap<>();
+    protected HashMap<String, Person> registered = new HashMap<>();
 
     public Events(String title, String date, String place, int max_participants, String description, EventModel model) {
         this.title = title;
