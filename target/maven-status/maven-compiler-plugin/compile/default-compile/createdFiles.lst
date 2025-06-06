@@ -8,6 +8,7 @@ br\academic\utils\participant\Student.class
 br\academic\utils\events\EventModel.class
 br\academic\views\PersonView.class
 br\academic\utils\participant\Professor.class
+br\academic\views\ReportsView.class
 br\academic\views\EventView.class
 br\academic\utils\participant\External.class
 br\academic\utils\events\Events.class

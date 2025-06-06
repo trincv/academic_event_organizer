@@ -105,7 +105,7 @@ public class EventView {
 
                     if(p == null) System.out.print("Invalid CPF, digit again: ");
 
-                } while(p != null);
+                } while(p == null);
 
                 Course c = new Course(title, date, place, max_participants, durationCourse, p, description, model);
                 App.ev.addEvent(c);
