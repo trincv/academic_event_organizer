@@ -4,38 +4,39 @@ import java.util.Scanner;
 import br.academic.utils.events.*;
 import br.academic.utils.participant.*;
 import br.academic.core.App;
-
+import java.lang.Thread;
+import java.lang.Exception;
 
 public class EventView {
 
-    public static void register() {
+    public static void eventRegister() {
         int type_option, model_option;
         EventModel model = EventModel.INPERSON;
 
+        App.clearScreen();
         System.out.println("\n-- Register an event --\n");
-        System.out.print("Choose type of event:\n");
 
+        System.out.println("0 - Academic fair");
+        System.out.println("1 - Course");
+        System.out.println("2 - Lecture");
+        System.out.println("3 - Workshop");
+        System.out.print("\n\nChoose type of event: ");
         do {
-
-            System.out.println("0 - Academic fair\n");
-            System.out.println("1 - Course\n");
-            System.out.println("2 - Lecture\n");
-            System.out.println("3 - Workshop\n");
 
             type_option = App.sc.nextInt();
             App.sc.nextLine();
 
-            if(type_option < 0 || type_option > 3) System.out.println("\nInvalid value. Choose again:\n");
+            if(type_option < 0 || type_option > 3) System.out.print("Invalid value! Digite again: ");
 
         } while(type_option < 0 || type_option > 3);
 
-        System.out.println("\nEnter event model: ");
+        System.out.println("\n0 - In person");
+        System.out.println("1 - Online");
+        System.out.println("2 - Hybrid");
+
+        System.out.print("\nEnter event model: ");
 
         do {
-
-            System.out.println("0 - In person\n");
-            System.out.println("1 - Online\n");
-            System.out.println("2 - Hybrid\n");
 
             model_option = App.sc.nextInt();
             App.sc.nextLine();
@@ -43,7 +44,7 @@ public class EventView {
             if(model_option == 1) model = EventModel.ONLINE;
             if(model_option == 2) model = EventModel.HYBRID;
 
-            if(model_option < 0 || model_option > 2) System.out.println("\nInvalid value. Choose again:\n");
+            if(model_option < 0 || model_option > 2) System.out.print("Invalid value! Choose again: ");
 
         } while(model_option < 0 || model_option > 2);
 
@@ -88,6 +89,14 @@ public class EventView {
                 AcademicFair f = new AcademicFair(title, date, place, max_participants, openToPublic, numberOfOrganizations, description, model);
                 App.ev.addEvent(f);
 
+                App.clearScreen();
+                System.out.println("\nEvent academic fair created with sucess!");
+
+                try{
+                    Thread.sleep(2 * 1000);
+                } catch(Exception e) {}
+                App.clearScreen();
+
                 break;
             }
             case 1: {
@@ -110,6 +119,14 @@ public class EventView {
                 Course c = new Course(title, date, place, max_participants, durationCourse, p, description, model);
                 App.ev.addEvent(c);
 
+                App.clearScreen();
+                System.out.println("\nEvent course created with sucess!");
+
+                try{
+                    Thread.sleep(2 * 1000);
+                } catch(Exception e) {}
+                App.clearScreen();
+
                 break;
             }
             case 2: {
@@ -123,6 +140,14 @@ public class EventView {
                 Lecture l = new Lecture(title, date, place, max_participants, speaker, durationLecture, description, model);
                 App.ev.addEvent(l);
 
+                App.clearScreen();
+                System.out.println("\nEvent lecture created with sucess!");
+
+                try{
+                    Thread.sleep(2 * 1000);
+                } catch(Exception e) {}
+                App.clearScreen();
+
                 break;
             }
             case 3: {
@@ -135,6 +160,13 @@ public class EventView {
                 Workshop w = new Workshop(title, date, place, max_participants, toolsRequired, instructor, description, model);
                 App.ev.addEvent(w);
 
+                App.clearScreen();
+                System.out.println("\nEvent workshop created with sucess!");
+
+                try{
+                    Thread.sleep(2 * 1000);
+                } catch(Exception e) {}
+                App.clearScreen();
                 break;
             }
         }

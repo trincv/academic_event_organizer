@@ -1,9 +1,9 @@
 package br.academic.core;
 
 import java.util.Scanner;
-import br.academic.utils.participant.*;
-import br.academic.utils.events.*;
-import br.academic.views.*;
+import br.academic.utils.participant.PersonManagment;
+import br.academic.utils.events.EventsManagment;
+import br.academic.views.ApplicationView;
 
 public class App 
 {
@@ -11,11 +11,16 @@ public class App
     public static EventsManagment ev = new EventsManagment();
     public static PersonManagment pe = new PersonManagment();
 
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public static void main( String[] args )
     {
 
         ApplicationView.mainView();
-
+        clearScreen();
         // Student s1 = new Student("Luiz Carlos", "luiz@gmail.com", 192938);
         // Student s2 = new Student("Fernando Amorim", "Fernando@gmail.com", 1902138);
         // External e1 = new External("Ruam Silva", "Ruam@gmail.com", 988762938);

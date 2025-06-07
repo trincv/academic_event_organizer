@@ -2,6 +2,7 @@ package br.academic.views;
 
 import java.util.Scanner;
 import br.academic.core.App;
+import br.academic.views.reports.*;
 
 public class ApplicationView {
 
@@ -23,17 +24,17 @@ public class ApplicationView {
 
             switch(option) {
                 case 1:
-                    PersonView.register();
+                    PersonView.personRegister();
                     break;
                 case 2:
-                    EventView.register();
+                    EventView.eventRegister();
                     break;
                 // case 3:
                 //     SubscriptionView.subscribe();
                 //     break;
-                // case 4:
-                //     ReportView.generate();
-                //     break;
+                case 4:
+                    ReportsView.mainReport();
+                    break;
                 case 0:
                     System.out.println("Exiting program...");
                     break;
@@ -43,4 +44,5 @@ public class ApplicationView {
 
         } while(option != 0);
     }
+
 }
