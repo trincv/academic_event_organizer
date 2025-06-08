@@ -29,9 +29,9 @@ public class ApplicationView {
                 case 2:
                     EventRegisterView.eventRegister();
                     break;
-                // case 3:
-                //     SubscriptionView.subscribe();
-                //     break;
+                case 3:
+                    SubscriptionView.subscribe();
+                    break;
                 case 4:
                     ReportsView.mainReport();
                     break;

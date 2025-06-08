@@ -19,7 +19,7 @@ public class Lecture extends Events {
         System.out.println("Speaker: " + speaker + " / Duration: " + durationLecture);
     }
 
-    public boolean AddPerson(Object obj) {
+    public boolean addPerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
         if(!(registered.size() < max_participants)) return false; 

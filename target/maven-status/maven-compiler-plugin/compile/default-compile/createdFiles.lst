@@ -1,6 +1,7 @@
 br\academic\utils\events\AcademicFair.class
 br\academic\utils\events\Workshop.class
 br\academic\utils\events\Course.class
+br\academic\views\SubscriptionView.class
 br\academic\utils\events\EventsManagment.class
 br\academic\utils\participant\Person.class
 br\academic\views\ApplicationView.class

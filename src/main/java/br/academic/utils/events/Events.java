@@ -27,6 +27,10 @@ public abstract class Events {
         return ID;
     }
 
+    public String getDate() {
+        return date;
+    }
+
     public void displayEvent() {
         System.out.print("[" + this.getClass().getSimpleName() + "] " + "ID: " + ID + " / Title: " + title  + " / Date: " + date + " / Place: " + place +" / Total participants: " + max_participants + " / Current subscribed: " + registered.size() + " / Description: " + description + "\n" );
     }
@@ -35,7 +39,7 @@ public abstract class Events {
         
     }
 
-    public abstract boolean AddPerson(Object obj);
+    public abstract boolean addPerson(Object obj);
 
     public abstract void getAllSubscribed();
 

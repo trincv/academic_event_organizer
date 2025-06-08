@@ -18,8 +18,8 @@ public class AcademicFair extends Events {
         super.displayEvent();
         System.out.println("Open to public: " + openToPublic + " / Number of organizations: " + numberOfOrganizations);
     }
-    
-    public boolean AddPerson(Object obj) {
+
+    public boolean addPerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
         if(openToPublic == false)

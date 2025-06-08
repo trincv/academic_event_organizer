@@ -20,7 +20,7 @@ public class Workshop extends Events {
         System.out.println("instructor: " + instructor + " / Tools required: " + toolsRequired);        
     }
 
-    public boolean AddPerson(Object obj) {
+    public boolean addPerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
         if(!(registered.size() < max_participants)) return false; 

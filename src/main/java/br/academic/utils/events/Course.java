@@ -19,7 +19,7 @@ public class Course extends Events {
         System.out.println("Professor: " + professorCourse.getName() + " / Duration: " + durationCourse);
     }
 
-    public boolean AddPerson(Object obj) {
+    public boolean addPerson(Object obj) {
 
         if(!(obj instanceof Person)) return false;
         if(!(obj instanceof Student)) return false;

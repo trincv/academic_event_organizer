@@ -49,6 +49,33 @@ public class EventView {
 
                 System.out.println("\nPress enter to return.");
                 App.sc.nextLine();
+
+                break;
+            }
+            case 2: {
+
+                App.clearScreen();
+                System.out.print("\nInsert the event's date: ");
+
+                App.ev.showEventsByDate(App.sc.nextLine());
+
+                System.out.println("\nPress enter to return.");
+                App.sc.nextLine();
+
+                break;
+            }
+            case 3: {
+
+                App.clearScreen();
+                System.out.print("\nInsert the event's type: ");
+
+                App.ev.showEventsByType(App.sc.nextLine());
+
+                System.out.println("\nPress enter to return.");
+                App.sc.nextLine();
+
+                break;
+
             }
             case 0:{
                 break;
