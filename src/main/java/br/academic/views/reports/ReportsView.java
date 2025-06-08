@@ -1,44 +1,69 @@
 package br.academic.views.reports;
 
 import br.academic.core.App;
+import br.academic.utils.participant.*;
 
 
 public class ReportsView {
 
     public static void mainReport() {
-        int option;
+        int option = 1;
 
-        App.clearScreen();
-        System.out.println("-------- Reports managment -------\n");
+        while (option != 0) {
 
-        System.out.println("0 - Return");
-        System.out.println("1 - Person view");
-        System.out.println("2 - Event view");
-        System.out.println("3 - Generate cetificate");
-        System.out.print("\nChoose an option: ");
+            App.clearScreen();
+            System.out.println("-------- Reports managment -------\n");
 
-        do {
-            option = App.sc.nextInt();
-            App.sc.nextLine();
+            System.out.println("0 - Return");
+            System.out.println("1 - Search especific person");
+            System.out.println("2 - Show event view");
+            System.out.println("3 - Generate cetificate");
+            System.out.print("\nChoose an option: ");
 
-            if(option < 0 || option > 3) System.out.print("Invalid option. Digit again: ");
+            do {
+                option = App.sc.nextInt();
+                App.sc.nextLine();
 
-        } while(option < 0 || option > 3);
+                if(option < 0 || option > 3) System.out.print("Invalid option. Digit again: ");
 
-        switch (option) {
-            case 1: {
-                break;
-            } 
-            case 2: {
-                break;
-            }
-            case 3: {
-                break;
-            }
-            case 0: {
-                break;
+            } while(option < 0 || option > 3);
+
+            switch (option) {
+                case 1: {
+                    int cpf;
+                    Person p = null;
+                    App.clearScreen();
+                    System.out.print("\nInsert the person's CPF: ");
+
+                    do {
+                        
+                        p = App.pe.searchPerson(App.sc.nextLine());
+
+                        if(p == null) System.out.print("Invalid CPF, digit again: ");
+
+                    } while(p == null);
+
+                    System.out.print("\n");
+
+                    p.displayPerson();
+
+                    System.out.println("\nPress enter to return.");
+                    App.sc.nextLine();
+
+                    break;
+                } 
+                case 2: {
+                    EventView.viewEvent();
+                    break;
+                }
+                case 3: {
+                    break;
+                }
+                case 0: {
+                    App.clearScreen();
+                    break;
+                }
             }
         }
-
     }
 }

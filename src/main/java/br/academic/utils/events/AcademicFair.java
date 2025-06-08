@@ -7,16 +7,16 @@ public class AcademicFair extends Events {
     private boolean openToPublic;
     private int numberOfOrganizations;
 
-    public AcademicFair(String title, String date, String place, int max_participants, boolean openToPublic, int numberOfOrganizations, String description, EventModel model) {
-        super(title, date, place, max_participants, description, model);
+    public AcademicFair(String title, String date, String place, int max_participants, boolean openToPublic, int numberOfOrganizations, String description, EventModel model, int ID) {
+        super(title, date, place, max_participants, description, model, ID);
         this.openToPublic = openToPublic;
         this.numberOfOrganizations = numberOfOrganizations;
     }
 
     @Override
     public void displayEvent() {
-        System.out.println("Type: Academic fair!\n" + "Open to public: " + openToPublic + "\nNumber of organizations: " + numberOfOrganizations);
         super.displayEvent();
+        System.out.println("Open to public: " + openToPublic + " / Number of organizations: " + numberOfOrganizations);
     }
     
     public boolean AddPerson(Object obj) {
@@ -32,7 +32,7 @@ public class AcademicFair extends Events {
 
     public void getAllSubscribed() {
         for(String key : registered.keySet()) {
-            registered.get(key).display();
+            registered.get(key).displayPerson();
         }
     }
 }

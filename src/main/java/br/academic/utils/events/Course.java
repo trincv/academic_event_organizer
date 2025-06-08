@@ -7,16 +7,16 @@ public class Course extends Events {
     private int durationCourse;
     private Professor professorCourse; 
 
-    public Course(String title, String date, String place, int max_participants, int durationCourse, Professor professorCourse, String description, EventModel model) {
-        super(title, date, place, max_participants, description, model);
+    public Course(String title, String date, String place, int max_participants, int durationCourse, Professor professorCourse, String description, EventModel model, int ID) {
+        super(title, date, place, max_participants, description, model, ID);
         this.durationCourse = durationCourse;
         this.professorCourse = professorCourse;
     }
 
     @Override
     public void displayEvent() {
-        System.out.println("Type: Course!\n" + "Professor: " + professorCourse.getName() + "\nDuration: " + durationCourse);
         super.displayEvent();
+        System.out.println("Professor: " + professorCourse.getName() + " / Duration: " + durationCourse);
     }
 
     public boolean AddPerson(Object obj) {
@@ -31,7 +31,7 @@ public class Course extends Events {
 
     public void getAllSubscribed() {
         for(String key : registered.keySet()) {
-            registered.get(key).display();
+            registered.get(key).displayPerson();
         }
     }
 }

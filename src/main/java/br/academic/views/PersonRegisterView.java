@@ -6,7 +6,7 @@ import br.academic.utils.participant.*;
 import java.lang.Thread;
 import java.lang.Exception;
 
-public class PersonView {
+public class PersonRegisterView {
 
     public static void personRegister() {
         int type_option;

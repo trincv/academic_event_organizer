@@ -7,7 +7,7 @@ import br.academic.core.App;
 import java.lang.Thread;
 import java.lang.Exception;
 
-public class EventView {
+public class EventRegisterView {
 
     public static void eventRegister() {
         int type_option, model_option;
@@ -51,6 +51,10 @@ public class EventView {
         System.out.print("\nEnter title: ");
         String title = App.sc.nextLine();
 
+        System.out.print("Enter event's ID: ");
+        int ID = App.sc.nextInt();
+        App.sc.nextLine();
+
         System.out.print("Enter date of event (dd/mm/aaaa): ");
         String date = App.sc.nextLine();
 
@@ -86,7 +90,7 @@ public class EventView {
 
                 } while (optionFair < 0 || optionFair > 1);
 
-                AcademicFair f = new AcademicFair(title, date, place, max_participants, openToPublic, numberOfOrganizations, description, model);
+                AcademicFair f = new AcademicFair(title, date, place, max_participants, openToPublic, numberOfOrganizations, description, model, ID);
                 App.ev.addEvent(f);
 
                 App.clearScreen();
@@ -110,13 +114,14 @@ public class EventView {
                 do {
 
                     String professorCPF = App.sc.nextLine();
-                    p = (Professor) App.pe.searchPerson(professorCPF);
+
+                    if(App.pe.searchPerson(professorCPF) instanceof Professor) p = (Professor) App.pe.searchPerson(professorCPF);
 
                     if(p == null) System.out.print("Invalid CPF, digit again: ");
 
                 } while(p == null);
 
-                Course c = new Course(title, date, place, max_participants, durationCourse, p, description, model);
+                Course c = new Course(title, date, place, max_participants, durationCourse, p, description, model, ID);
                 App.ev.addEvent(c);
 
                 App.clearScreen();
@@ -137,7 +142,7 @@ public class EventView {
                 System.out.print("Enter speaker's name: ");
                 String speaker = App.sc.nextLine();
 
-                Lecture l = new Lecture(title, date, place, max_participants, speaker, durationLecture, description, model);
+                Lecture l = new Lecture(title, date, place, max_participants, speaker, durationLecture, description, model, ID);
                 App.ev.addEvent(l);
 
                 App.clearScreen();
@@ -157,7 +162,7 @@ public class EventView {
                 System.out.print("Enter instructor's name: ");
                 String instructor = App.sc.nextLine();
 
-                Workshop w = new Workshop(title, date, place, max_participants, toolsRequired, instructor, description, model);
+                Workshop w = new Workshop(title, date, place, max_participants, toolsRequired, instructor, description, model, ID);
                 App.ev.addEvent(w);
 
                 App.clearScreen();

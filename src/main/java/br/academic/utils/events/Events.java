@@ -5,6 +5,7 @@ import br.academic.utils.participant.*;
 
 public abstract class Events {
     private EventModel model;
+    private int ID;
     private String title;
     private String date;
     private String place;
@@ -12,21 +13,22 @@ public abstract class Events {
     private String description;
     protected HashMap<String, Person> registered = new HashMap<>();
 
-    public Events(String title, String date, String place, int max_participants, String description, EventModel model) {
+    public Events(String title, String date, String place, int max_participants, String description, EventModel model, int ID) {
         this.title = title;
         this.date = date;
         this.place = place;
         this.max_participants = max_participants;
         this.description = description;
         this.model = model;
+        this.ID = ID;
     }
 
-    public String getTitle() {
-        return title;
+    public int getID() {
+        return ID;
     }
 
     public void displayEvent() {
-        System.out.print("Title: " + title + "\n" + "Date: " + date + "\n" + "Place: " + place + "\n" + "Total participants: " + max_participants + "\n" + "Current subscribed: " + registered.size() + "\n" + "Description: " + description + "\n" );
+        System.out.print("[" + this.getClass().getSimpleName() + "] " + "ID: " + ID + " / Title: " + title  + " / Date: " + date + " / Place: " + place +" / Total participants: " + max_participants + " / Current subscribed: " + registered.size() + " / Description: " + description + "\n" );
     }
 
     public void setType() {

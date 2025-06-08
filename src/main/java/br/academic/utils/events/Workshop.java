@@ -8,16 +8,16 @@ public class Workshop extends Events {
     private String instructor;
 
 
-    public Workshop(String title, String date, String place, int max_participants, String toolsRequired, String instructor, String description, EventModel model) {
-        super(title, date, place, max_participants, description, model);
+    public Workshop(String title, String date, String place, int max_participants, String toolsRequired, String instructor, String description, EventModel model, int ID) {
+        super(title, date, place, max_participants, description, model, ID);
         this.toolsRequired = toolsRequired;
         this.instructor = instructor;
     }
 
     @Override
     public void displayEvent() {
-        System.out.println("Type: Workshop!\n" + "instructor: " + instructor + "\nTools required: " + toolsRequired);        
         super.displayEvent();
+        System.out.println("instructor: " + instructor + " / Tools required: " + toolsRequired);        
     }
 
     public boolean AddPerson(Object obj) {
@@ -31,7 +31,7 @@ public class Workshop extends Events {
 
     public void getAllSubscribed() {
         for(String key : registered.keySet()) {
-            registered.get(key).display();
+            registered.get(key).displayPerson();
         }
     }
 }

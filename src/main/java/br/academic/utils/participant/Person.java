@@ -23,8 +23,8 @@ public abstract class Person {
     public String getEmail() {
         return email;
     }
-    public void display() {
-        System.out.println("Name: "+ name + " / " + "Email: " + email);
+    public void displayPerson() {
+        System.out.println("[" + this.getClass().getSimpleName() + "] " + "Name: "+ name + " / " + "Email: " + email + " / " + "CPF: " + CPF);
     }
 
 }

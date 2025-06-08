@@ -2,7 +2,7 @@ package br.academic.views;
 
 import java.util.Scanner;
 import br.academic.core.App;
-import br.academic.views.reports.*;
+import br.academic.views.reports.ReportsView;
 
 public class ApplicationView {
 
@@ -24,10 +24,10 @@ public class ApplicationView {
 
             switch(option) {
                 case 1:
-                    PersonView.personRegister();
+                    PersonRegisterView.personRegister();
                     break;
                 case 2:
-                    EventView.eventRegister();
+                    EventRegisterView.eventRegister();
                     break;
                 // case 3:
                 //     SubscriptionView.subscribe();
