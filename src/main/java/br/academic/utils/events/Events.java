@@ -2,8 +2,9 @@ package br.academic.utils.events;
 
 import java.util.HashMap;
 import br.academic.utils.participant.*;
+import br.academic.utils.interfaces.Idisplayable;
 
-public abstract class Events {
+public abstract class Events implements Idisplayable {
     private EventModel model;
     private int ID;
     private String title;
@@ -31,7 +32,8 @@ public abstract class Events {
         return date;
     }
 
-    public void displayEvent() {
+    @Override
+    public void display() {
         System.out.print("[" + this.getClass().getSimpleName() + "] " + "ID: " + ID + " / Title: " + title  + " / Date: " + date + " / Place: " + place +" / Total participants: " + max_participants + " / Current subscribed: " + registered.size() + " / Description: " + description + "\n" );
     }
 
@@ -39,8 +41,12 @@ public abstract class Events {
         
     }
 
-    public abstract boolean addPerson(Object obj);
+    public void getAllSubscribed() {
+        for(String key : registered.keySet()) {
+            registered.get(key).display();
+        }
+    }
 
-    public abstract void getAllSubscribed();
+    public abstract boolean addPerson(Object obj);
 
 }

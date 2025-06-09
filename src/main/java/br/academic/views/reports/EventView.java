@@ -45,7 +45,7 @@ public class EventView {
                 } while(e == null);
 
                 App.clearScreen();
-                e.displayEvent();
+                e.display();
 
                 System.out.println("\nPress enter to return.");
                 App.sc.nextLine();
@@ -67,7 +67,7 @@ public class EventView {
             case 3: {
 
                 App.clearScreen();
-                System.out.print("\nInsert the event's type: ");
+                System.out.print("\nInsert the event's type without spaces: ");
 
                 App.ev.showEventsByType(App.sc.nextLine());
 

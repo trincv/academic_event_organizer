@@ -32,7 +32,7 @@ public class EventsManagment {
     for(Events e : eventsArray) 
       if (e.getDate().equals(userDate)) {
         System.out.print("\n");
-        e.displayEvent();
+        e.display();
         i++;    
       }
     if (i == 0) System.out.println("\nThere aren't events registered that day.");
@@ -43,7 +43,7 @@ public class EventsManagment {
     for(Events e : eventsArray) 
       if (e.getClass().getSimpleName().trim().equalsIgnoreCase(userType.trim())) {
         System.out.print("\n");
-        e.displayEvent();
+        e.display();
         i++;    
       }
     if (i == 0) System.out.println("\nThere aren't events from that type registered.");

@@ -1,6 +1,8 @@
 package br.academic.utils.participant;
 
-public abstract class Person {
+import br.academic.utils.interfaces.Idisplayable;
+
+public abstract class Person implements Idisplayable {
     protected String name;
     protected String email;
     protected String CPF;
@@ -11,7 +13,7 @@ public abstract class Person {
         this.CPF = CPF;
     }
 
-    public abstract String getCategory();
+    public abstract String getCategory(); 
 
     public String getCPF() {
         return CPF;
@@ -23,8 +25,9 @@ public abstract class Person {
     public String getEmail() {
         return email;
     }
-    public void displayPerson() {
+
+    @Override
+    public void display() {
         System.out.println("[" + this.getClass().getSimpleName() + "] " + "Name: "+ name + " / " + "Email: " + email + " / " + "CPF: " + CPF);
     }
-
 }

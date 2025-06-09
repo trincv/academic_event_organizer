@@ -4,6 +4,7 @@ br\academic\utils\events\Course.class
 br\academic\views\SubscriptionView.class
 br\academic\utils\events\EventsManagment.class
 br\academic\utils\participant\Person.class
+br\academic\utils\interfaces\Idisplayable.class
 br\academic\views\ApplicationView.class
 br\academic\utils\participant\Student.class
 br\academic\views\EventRegisterView.class

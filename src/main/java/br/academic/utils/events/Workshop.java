@@ -15,8 +15,8 @@ public class Workshop extends Events {
     }
 
     @Override
-    public void displayEvent() {
-        super.displayEvent();
+    public void display() {
+        super.display();
         System.out.println("instructor: " + instructor + " / Tools required: " + toolsRequired);        
     }
 
@@ -27,11 +27,5 @@ public class Workshop extends Events {
         Person p = (Person) obj;
         registered.put(p.getCPF(), p);
         return true;
-    }
-
-    public void getAllSubscribed() {
-        for(String key : registered.keySet()) {
-            registered.get(key).displayPerson();
-        }
     }
 }

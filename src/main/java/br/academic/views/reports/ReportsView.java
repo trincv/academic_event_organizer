@@ -45,7 +45,7 @@ public class ReportsView {
 
                     System.out.print("\n");
 
-                    p.displayPerson();
+                    p.display();
 
                     System.out.println("\nPress enter to return.");
                     App.sc.nextLine();

@@ -3,6 +3,8 @@ package br.academic.views;
 import br.academic.core.App;
 import br.academic.utils.events.*;
 import br.academic.utils.participant.*;
+import java.lang.Thread;
+import java.lang.Exception;
 
 public class SubscriptionView {
 
@@ -32,11 +34,14 @@ public class SubscriptionView {
 
         } while(e == null);
 
-        if(e.addPerson(p) == false) System.out.println("The subscription was a failure.");
-        else System.out.println("The subscription was a sucess.");
+        App.clearScreen();
 
-        System.out.println("\nPress enter to return.");
-        App.sc.nextLine();
+        if(e.addPerson(p) == false) System.out.println("The subscription was a failure.");
+        else System.out.print("The subscription was a sucess.");
+
+        try{
+            Thread.sleep(2 * 1000);
+        } catch(Exception E) {}
 
         App.clearScreen();
     }
