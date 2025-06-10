@@ -29,6 +29,10 @@ public abstract class Events implements IDisplayable {
         return ID;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public String getDate() {
         return date;
     }

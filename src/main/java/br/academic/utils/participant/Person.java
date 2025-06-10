@@ -3,7 +3,7 @@ package br.academic.utils.participant;
 import br.academic.interfaces.IDisplayable;
 import br.academic.utils.events.*;
 import java.util.ArrayList;
-
+import java.util.List;
 public abstract class Person implements IDisplayable {
     private String name;
     private String email;
@@ -33,6 +33,10 @@ public abstract class Person implements IDisplayable {
     public boolean subscribeInEvent(Events event) {
         subscribedInEvents.add(event);
         return true;
+    }
+
+    public List<Events> getAllSubscribedEvents() {
+        return subscribedInEvents;
     }
 
     @Override

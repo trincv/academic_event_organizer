@@ -2,7 +2,8 @@ package br.academic.views.reports;
 
 import br.academic.core.App;
 import br.academic.utils.participant.*;
-
+import br.academic.utils.events.Events;
+import java.util.List;
 
 public class ReportsView {
 
@@ -57,6 +58,51 @@ public class ReportsView {
                     break;
                 }
                 case 3: {
+                    App.clearScreen();
+
+                    Person person = null;
+
+                    System.out.print("Digit the person's ID: ");
+
+                    do {
+                        person = App.pe.searchPerson(App.sc.nextLine());
+                        if(person == null) System.out.print("Invalid ID. Digit again: ");
+
+                    } while(person == null);
+
+                    List<Events> subscribedInEvents = person.getAllSubscribedEvents();
+
+                    if(subscribedInEvents.size() == 0) {
+                        System.out.println("This person isn't subscribed in any event\n");
+                        System.out.print("Press anything to return\n");
+                        App.sc.nextLine();
+                        break;
+                    }
+                    System.out.println("Wich event do you want to get the certificate of?:\n");
+                    
+                    for(Events event : subscribedInEvents) {
+                        System.out.println("[" + event.getClass().getSimpleName() + "]" + " ID: " + event.getID() + " / Title: " + event.getTitle());
+                    }
+
+                    Events eventInput = null;
+
+                    System.out.print("\nInsert the wanted event's ID: ");
+                    do {
+                        eventInput = App.ev.searchEvent(App.sc.nextInt());
+                        App.sc.nextLine();
+
+                        if (eventInput == null || subscribedInEvents.contains(eventInput) == false) System.out.print("Invalid ID. Digit again: ");
+
+                    } while(eventInput == null || subscribedInEvents.contains(eventInput) == false);
+
+                    App.clearScreen();
+
+                    System.out.println("-----------------CERTIFICATE-----------------\n\n");
+                    System.out.println("This certificates that " + person.getName() + " concluded the event " + eventInput.getTitle() + "\nCongratulations!!\n\n");
+
+                    System.out.println("Press antyhing to return");
+                    App.sc.nextLine();
+                    App.clearScreen();
                     break;
                 }
                 case 0: {
