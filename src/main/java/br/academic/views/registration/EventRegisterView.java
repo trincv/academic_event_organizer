@@ -1,9 +1,9 @@
-package br.academic.views;
+package br.academic.views.registration;
 
-import java.util.Scanner;
+import br.academic.core.App;
+import br.academic.enums.EventModel;
 import br.academic.utils.events.*;
 import br.academic.utils.participant.*;
-import br.academic.core.App;
 import java.lang.Thread;
 import java.lang.Exception;
 
@@ -62,7 +62,7 @@ public class EventRegisterView {
         String place = App.sc.nextLine();
 
         System.out.print("Enter max participants: ");
-        int max_participants = App.sc.nextInt();
+        int maxParticipants = App.sc.nextInt();
         App.sc.nextLine();
 
         System.out.print("Enter description: ");
@@ -74,13 +74,13 @@ public class EventRegisterView {
                 int numberOfOrganizations = App.sc.nextInt();
                 App.sc.nextLine();
 
-                System.out.println("The fair is open to public?");
+                System.out.println("The fair is open to public?\n");
                 int optionFair;
                 boolean openToPublic = true;
 
                 do {
                     System.out.print("0 - yes\n");
-                    System.out.print("1 - no\n");
+                    System.out.println("1 - no\n");
 
                     optionFair = App.sc.nextInt();
                     App.sc.nextLine();
@@ -90,8 +90,8 @@ public class EventRegisterView {
 
                 } while (optionFair < 0 || optionFair > 1);
 
-                AcademicFair f = new AcademicFair(title, date, place, max_participants, openToPublic, numberOfOrganizations, description, model, ID);
-                App.ev.addEvent(f);
+                AcademicFair academicFair = new AcademicFair(title, date, place, maxParticipants, openToPublic, numberOfOrganizations, description, model, ID);
+                App.ev.addEvent(academicFair);
 
                 App.clearScreen();
                 System.out.println("\nEvent academic fair created with sucess!");
@@ -109,20 +109,20 @@ public class EventRegisterView {
                 App.sc.nextLine();
 
                 System.out.print("Enter professor's CPF: ");
-                Professor p = null;
+                Professor professor = null;
 
                 do {
 
                     String professorCPF = App.sc.nextLine();
 
-                    if(App.pe.searchPerson(professorCPF) instanceof Professor) p = (Professor) App.pe.searchPerson(professorCPF);
+                    if(App.pe.searchPerson(professorCPF) instanceof Professor) professor = (Professor) App.pe.searchPerson(professorCPF);
 
-                    if(p == null) System.out.print("Invalid CPF, digit again: ");
+                    if(professor == null) System.out.print("Invalid CPF, digit again: ");
 
-                } while(p == null);
+                } while(professor == null);
 
-                Course c = new Course(title, date, place, max_participants, durationCourse, p, description, model, ID);
-                App.ev.addEvent(c);
+                Course course = new Course(title, date, place, maxParticipants, durationCourse, professor, description, model, ID);
+                App.ev.addEvent(course);
 
                 App.clearScreen();
                 System.out.println("\nEvent course created with sucess!");
@@ -142,8 +142,8 @@ public class EventRegisterView {
                 System.out.print("Enter speaker's name: ");
                 String speaker = App.sc.nextLine();
 
-                Lecture l = new Lecture(title, date, place, max_participants, speaker, durationLecture, description, model, ID);
-                App.ev.addEvent(l);
+                Lecture lecture = new Lecture(title, date, place, maxParticipants, speaker, durationLecture, description, model, ID);
+                App.ev.addEvent(lecture);
 
                 App.clearScreen();
                 System.out.println("\nEvent lecture created with sucess!");
@@ -162,8 +162,8 @@ public class EventRegisterView {
                 System.out.print("Enter instructor's name: ");
                 String instructor = App.sc.nextLine();
 
-                Workshop w = new Workshop(title, date, place, max_participants, toolsRequired, instructor, description, model, ID);
-                App.ev.addEvent(w);
+                Workshop workshop = new Workshop(title, date, place, maxParticipants, toolsRequired, instructor, description, model, ID);
+                App.ev.addEvent(workshop);
 
                 App.clearScreen();
                 System.out.println("\nEvent workshop created with sucess!");

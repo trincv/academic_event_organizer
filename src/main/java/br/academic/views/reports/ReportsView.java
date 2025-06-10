@@ -7,9 +7,9 @@ import br.academic.utils.participant.*;
 public class ReportsView {
 
     public static void mainReport() {
-        int option = 1;
+        int option;
 
-        while (option != 0) {
+        do {
 
             App.clearScreen();
             System.out.println("-------- Reports managment -------\n");
@@ -31,21 +31,21 @@ public class ReportsView {
             switch (option) {
                 case 1: {
                     int cpf;
-                    Person p = null;
+                    Person person = null;
                     App.clearScreen();
                     System.out.print("\nInsert the person's CPF: ");
 
                     do {
                         
-                        p = App.pe.searchPerson(App.sc.nextLine());
+                        person = App.pe.searchPerson(App.sc.nextLine());
 
-                        if(p == null) System.out.print("Invalid CPF, digit again: ");
+                        if(person == null) System.out.print("Invalid CPF, digit again: ");
 
-                    } while(p == null);
+                    } while(person == null);
 
                     System.out.print("\n");
 
-                    p.display();
+                    person.display();
 
                     System.out.println("\nPress enter to return.");
                     App.sc.nextLine();
@@ -53,7 +53,7 @@ public class ReportsView {
                     break;
                 } 
                 case 2: {
-                    EventView.viewEvent();
+                    EventsReportsView.viewEventsReports();
                     break;
                 }
                 case 3: {
@@ -64,6 +64,6 @@ public class ReportsView {
                     break;
                 }
             }
-        }
+        } while(option != 0);
     }
 }

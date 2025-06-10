@@ -1,5 +1,6 @@
 package br.academic.utils.events;
 
+import br.academic.enums.EventModel;
 import br.academic.utils.participant.*;
 import java.util.HashMap;
 
@@ -7,8 +8,8 @@ public class AcademicFair extends Events {
     private boolean openToPublic;
     private int numberOfOrganizations;
 
-    public AcademicFair(String title, String date, String place, int max_participants, boolean openToPublic, int numberOfOrganizations, String description, EventModel model, int ID) {
-        super(title, date, place, max_participants, description, model, ID);
+    public AcademicFair(String title, String date, String place, int maxParticipants, boolean openToPublic, int numberOfOrganizations, String description, EventModel model, int ID) {
+        super(title, date, place, maxParticipants, description, model, ID);
         this.openToPublic = openToPublic;
         this.numberOfOrganizations = numberOfOrganizations;
     }
@@ -16,17 +17,14 @@ public class AcademicFair extends Events {
     @Override
     public void display() {
         super.display();
-        System.out.println("Open to public: " + openToPublic + " / Number of organizations: " + numberOfOrganizations);
+        System.out.println("\nOpen to public: " + openToPublic + "\nNumber of organizations: " + numberOfOrganizations + "\n");
     }
 
-    public boolean addPerson(Object obj) {
-
-        if(!(obj instanceof Person)) return false;
+    public boolean subscribePerson(Person person) {
         if(openToPublic == false)
-            if((obj instanceof External)) return false;
-        if(!(registered.size() < max_participants)) return false; 
-        Person p = (Person) obj;
-        registered.put(p.getCPF(), p);
+            if((person instanceof External)) return false;
+        if(!(registered.size() < maxParticipants)) return false; 
+        registered.put(person.getCPF(), person);
         return true;
     }
 }

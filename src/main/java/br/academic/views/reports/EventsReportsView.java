@@ -3,9 +3,9 @@ package br.academic.views.reports;
 import br.academic.core.App;
 import br.academic.utils.events.*;
 
-public class EventView {
+public class EventsReportsView {
 
-    public static void viewEvent() {
+    public static void viewEventsReports() {
         
         int option;
 
@@ -30,22 +30,22 @@ public class EventView {
 
         switch(option) {
             case 1: {
-                Events e = null;
+                Events event = null;
 
                 App.clearScreen();
                 System.out.print("\nInsert the event's ID: ");
 
                 do {
                     
-                    e = App.ev.searchEvent(App.sc.nextInt());
+                    event = App.ev.searchEvent(App.sc.nextInt());
                     App.sc.nextLine();
 
-                    if(e == null) System.out.print("Invalid ID. Digit again: ");
+                    if(event == null) System.out.print("Invalid ID. Digit again: ");
 
-                } while(e == null);
+                } while(event == null);
 
                 App.clearScreen();
-                e.display();
+                event.display();
 
                 System.out.println("\nPress enter to return.");
                 App.sc.nextLine();

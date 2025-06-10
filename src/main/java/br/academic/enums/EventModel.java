@@ -1,5 +1,4 @@
-package br.academic.utils.events;
-
+package br.academic.enums;
 
 public enum EventModel {
     INPERSON,

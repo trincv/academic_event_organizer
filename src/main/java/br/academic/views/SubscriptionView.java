@@ -9,8 +9,8 @@ import java.lang.Exception;
 public class SubscriptionView {
 
     public static void subscribe() {
-        Person p = null;
-        Events e = null;
+        Person person = null;
+        Events event = null;
 
         App.clearScreen();
         System.out.println("--------Subscribe person-------\n");
@@ -18,30 +18,30 @@ public class SubscriptionView {
 
         do {
 
-            p = App.pe.searchPerson(App.sc.nextLine());
+            person = App.pe.searchPerson(App.sc.nextLine());
 
-            if(p == null) System.out.print("Invalid CPF. Digit again: ");
+            if(person == null) System.out.print("Invalid CPF. Digit again: ");
 
-        } while(p == null);
+        } while(person == null);
 
         System.out.print("\nInsert the event's ID: ");
 
         do {
 
-            e = App.ev.searchEvent(App.sc.nextInt());
+            event = App.ev.searchEvent(App.sc.nextInt());
 
-            if(e == null) System.out.print("Invalid ID. Digit again: ");
+            if(event == null) System.out.print("Invalid ID. Digit again: ");
 
-        } while(e == null);
+        } while(event == null);
 
         App.clearScreen();
 
-        if(e.addPerson(p) == false) System.out.println("The subscription was a failure.");
+        if(event.subscribePerson(person) == false || person.subscribeInEvent(event) == false) System.out.println("The subscription was a failure.");
         else System.out.print("The subscription was a sucess.");
 
         try{
             Thread.sleep(2 * 1000);
-        } catch(Exception E) {}
+        } catch(Exception e) {}
 
         App.clearScreen();
     }

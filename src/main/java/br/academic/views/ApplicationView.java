@@ -1,8 +1,9 @@
 package br.academic.views;
 
-import java.util.Scanner;
 import br.academic.core.App;
 import br.academic.views.reports.ReportsView;
+import br.academic.views.SubscriptionView;
+import br.academic.views.registration.*;
 
 public class ApplicationView {
 
@@ -20,7 +21,7 @@ public class ApplicationView {
             System.out.print("\nChoose an option: ");
 
             option = App.sc.nextInt();
-            App.sc.nextLine(); // consume leftover newline
+            App.sc.nextLine(); 
 
             switch(option) {
                 case 1:

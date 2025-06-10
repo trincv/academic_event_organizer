@@ -1,8 +1,7 @@
 package br.academic.core;
 
 import java.util.Scanner;
-import br.academic.utils.participant.PersonManagment;
-import br.academic.utils.events.EventsManagment;
+import br.academic.managment.*;
 import br.academic.views.ApplicationView;
 
 public class App 

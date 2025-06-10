@@ -1,6 +1,5 @@
-package br.academic.views;
+package br.academic.views.registration;
 
-import java.util.Scanner;
 import br.academic.core.App;
 import br.academic.utils.participant.*;
 import java.lang.Thread;
@@ -39,8 +38,8 @@ public class PersonRegisterView {
 
         switch(type_option) {
             case 0: {
-                Student s = new Student(name, email, CPF);
-                App.pe.addPerson(s);
+                Student student = new Student(name, email, CPF);
+                App.pe.addPerson(student);
 
                 App.clearScreen();
                 System.out.print("New student created with sucess!!");
@@ -53,8 +52,8 @@ public class PersonRegisterView {
                 break;
             }
             case 1: {
-                Professor p = new Professor(name, email, CPF);
-                App.pe.addPerson(p);
+                Professor professor = new Professor(name, email, CPF);
+                App.pe.addPerson(professor);
 
                 App.clearScreen();
                 System.out.print("New professor created with sucess!!");
@@ -67,15 +66,15 @@ public class PersonRegisterView {
                 break;
             }
             case 2: {
-                External e = new External(name, email, CPF);
-                App.pe.addPerson(e);
+                External external = new External(name, email, CPF);
+                App.pe.addPerson(external);
 
                 App.clearScreen();
                 System.out.print("New external created with sucess!!");
                 
                 try{
                     Thread.sleep(2 * 1000);
-                } catch(Exception E) {}                
+                } catch(Exception e) {}                
 
                 App.clearScreen();
                 break;
