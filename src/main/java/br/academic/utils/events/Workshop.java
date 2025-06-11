@@ -18,12 +18,20 @@ public class Workshop extends Events {
     @Override
     public void display() {
         super.display();
-        System.out.println("\ninstructor: " + instructor + "\nTools required: " + toolsRequired + "\n");        
+        System.out.println("instructor: " + instructor + " / Tools required: " + toolsRequired + "\n");        
     }
 
     public boolean subscribePerson(Person person) {
-        if(!(registered.size() < maxParticipants)) return false; 
+        if(!(registered.size() < maxParticipants)) {
+            System.err.println("Error: The event is already at full capacity.");
+            return false;
+        }
+        if (registered.containsKey(person.getCPF())) { 
+        System.err.println("Error: Person is already subscribed to this workshop.");
+        return false;
+        }
         registered.put(person.getCPF(), person);
+
         return true;
     }
 }

@@ -1,6 +1,7 @@
 package br.academic.views;
 
 import br.academic.core.App;
+import br.academic.utils.validations.*;
 import br.academic.views.reports.ReportsView;
 import br.academic.views.SubscriptionView;
 import br.academic.views.registration.*;
@@ -20,8 +21,7 @@ public class ApplicationView {
             System.out.println("4 - Generate reports");
             System.out.print("\nChoose an option: ");
 
-            option = App.sc.nextInt();
-            App.sc.nextLine(); 
+            option = InputInt.scanInt(0,4);
 
             switch(option) {
                 case 1:
@@ -39,8 +39,6 @@ public class ApplicationView {
                 case 0:
                     System.out.println("Exiting program...");
                     break;
-                default:
-                    System.out.println("Invalid option. Try again.");
             }
 
         } while(option != 0);

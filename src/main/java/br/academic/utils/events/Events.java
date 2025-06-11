@@ -38,9 +38,11 @@ public abstract class Events implements IDisplayable {
     }
 
     @Override
-    public void display() {
-        System.out.print("[" + this.getClass().getSimpleName() + "] " + "\nID: " + ID + "\nTitle: " + title  + "\nDate: " + date + "\nPlace: " + place +"\nTotal participants: " + maxParticipants + "\nCurrent subscribed: " + registered.size() + "\nDescription: " + description);
-    }
+public void display() {
+    System.out.println("[" + this.getClass().getSimpleName() + "] ID: " + ID + " / Title: " + title + " / Model: " +  model + " / Date: " + date + " / Place: " + place);
+    System.out.println("Total Participants: " + maxParticipants + " / Current Subscribed: " + registered.size());
+    System.out.println("Description: " + description);
+}
 
     public void getAllSubscribed() {
         for(String key : registered.keySet()) {

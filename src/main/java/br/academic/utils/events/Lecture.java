@@ -17,12 +17,20 @@ public class Lecture extends Events {
     @Override
     public void display() {
         super.display();
-        System.out.println("\nSpeaker: " + speaker + "\nDuration: " + durationLecture + "\n");
+        System.out.println("Speaker: " + speaker + " / Duration: " + durationLecture + "\n");
     }
 
     public boolean subscribePerson(Person person) {
-        if(!(registered.size() < maxParticipants)) return false; 
+        if(!(registered.size() < maxParticipants)) {
+            System.err.println("Error: The event is already at full capacity.");
+            return false;
+        } 
+        if (registered.containsKey(person.getCPF())) { 
+        System.err.println("Error: Person is already subscribed to this lecture.");
+        return false;
+        }
         registered.put(person.getCPF(), person);
+
         return true;
     }
 }

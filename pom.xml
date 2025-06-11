@@ -15,25 +15,59 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.14.0</version>
+        <groupId>jakarta.validation</groupId>
+        <artifactId>jakarta.validation-api</artifactId>
+        <version>3.0.2</version> 
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate.validator</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>8.0.1.Final</version> 
+    </dependency>
+    <dependency>
+        <groupId>org.glassfish</groupId>
+        <artifactId>jakarta.el</artifactId>
+        <version>4.0.2</version> 
+        <scope>runtime</scope>
     </dependency>
   </dependencies>
   <build>
-  <plugins>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-jar-plugin</artifactId>
-      <version>3.3.0</version>
-      <configuration>
-        <archive>
-          <manifest>
-            <mainClass>br.academic.core.App</mainClass>
-          </manifest>
-        </archive>
-      </configuration>
-    </plugin>
-  </plugins>
-</build>
+    <plugins>
+      <!-- IMPORTANT: Add maven-compiler-plugin to explicitly set Java version for compilation -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version> <!-- Use a recent version -->
+        <configuration>
+          <source>21</source> <!-- Set to your Java version, e.g., 17, 21, or 24 -->
+          <target>21</target> <!-- Set to your Java version -->
+          <release>21</release> <!-- Recommended for JDK 9+ -->
+        </configuration>
+      </plugin>
+
+      <!-- This plugin will create a "fat JAR" with all dependencies included -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.2</version> <!-- Use a recent version -->
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>br.academic.core.App</mainClass>
+                </transformer>
+              </transformers>
+              <!-- Optional: Specify a different name for the shaded JAR to distinguish it -->
+              <finalName>${project.artifactId}-shaded</finalName>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

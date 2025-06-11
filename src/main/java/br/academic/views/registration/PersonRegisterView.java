@@ -1,6 +1,7 @@
 package br.academic.views.registration;
 
 import br.academic.core.App;
+import br.academic.utils.validations.*;
 import br.academic.utils.participant.*;
 import java.lang.Thread;
 import java.lang.Exception;
@@ -18,14 +19,7 @@ public class PersonRegisterView {
         
         System.out.print("\nChoose the type of person: ");
 
-        do {
-
-            type_option = App.sc.nextInt();
-            App.sc.nextLine();
-
-            if(type_option < 0 || type_option > 2) System.out.print("Invalid option, choose again: ");
-
-        } while(type_option < 0 || type_option > 2);
+        type_option = InputInt.scanInt(0,2);
 
         System.out.print("\nEnter name: ");
         String name = App.sc.nextLine();
@@ -34,7 +28,15 @@ public class PersonRegisterView {
         String email = App.sc.nextLine();
 
         System.out.print("Enter CPF: ");
-        String CPF = App.sc.nextLine();
+
+        String CPF;
+        do {
+            CPF = CpfValidation.getValidCpfInput();
+            if(App.pe.searchPerson(CPF) == null)
+                break;
+            else
+                System.err.print("Error: Can not exists two people with the same CPF. Digit again: ");
+        } while(true);
 
         switch(type_option) {
             case 0: {

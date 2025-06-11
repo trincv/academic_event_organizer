@@ -1,6 +1,7 @@
 package br.academic.views.reports;
 
 import br.academic.core.App;
+import br.academic.utils.validations.*;
 import br.academic.utils.participant.*;
 import br.academic.utils.events.Events;
 import java.util.List;
@@ -21,13 +22,7 @@ public class ReportsView {
             System.out.println("3 - Generate cetificate");
             System.out.print("\nChoose an option: ");
 
-            do {
-                option = App.sc.nextInt();
-                App.sc.nextLine();
-
-                if(option < 0 || option > 3) System.out.print("Invalid option. Digit again: ");
-
-            } while(option < 0 || option > 3);
+            option = InputInt.scanInt(0,3);
 
             switch (option) {
                 case 1: {
@@ -38,9 +33,9 @@ public class ReportsView {
 
                     do {
                         
-                        person = App.pe.searchPerson(App.sc.nextLine());
+                        person = App.pe.searchPerson( CpfValidation.getValidCpfInput());
 
-                        if(person == null) System.out.print("Invalid CPF, digit again: ");
+                        if(person == null) System.out.print("Person not found. Digit again: ");
 
                     } while(person == null);
 
@@ -62,11 +57,12 @@ public class ReportsView {
 
                     Person person = null;
 
-                    System.out.print("Digit the person's ID: ");
+                    System.out.print("Digit the person's CPF: ");
 
                     do {
-                        person = App.pe.searchPerson(App.sc.nextLine());
-                        if(person == null) System.out.print("Invalid ID. Digit again: ");
+
+                        person = App.pe.searchPerson( CpfValidation.getValidCpfInput());
+                        if(person == null) System.out.print("Person not found. Digit again: ");
 
                     } while(person == null);
 
@@ -78,7 +74,7 @@ public class ReportsView {
                         App.sc.nextLine();
                         break;
                     }
-                    System.out.println("Wich event do you want to get the certificate of?:\n");
+                    System.out.println("Which event do you want to get the certificate of?:\n");
                     
                     for(Events event : subscribedInEvents) {
                         System.out.println("[" + event.getClass().getSimpleName() + "]" + " ID: " + event.getID() + " / Title: " + event.getTitle());
@@ -88,10 +84,9 @@ public class ReportsView {
 
                     System.out.print("\nInsert the wanted event's ID: ");
                     do {
-                        eventInput = App.ev.searchEvent(App.sc.nextInt());
-                        App.sc.nextLine();
+                        eventInput = App.ev.searchEvent(InputInt.scanInt());
 
-                        if (eventInput == null || subscribedInEvents.contains(eventInput) == false) System.out.print("Invalid ID. Digit again: ");
+                        if (eventInput == null || subscribedInEvents.contains(eventInput) == false) System.out.print("Event not found. Digit again: ");
 
                     } while(eventInput == null || subscribedInEvents.contains(eventInput) == false);
 

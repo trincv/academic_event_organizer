@@ -1,6 +1,7 @@
 package br.academic.views.reports;
 
 import br.academic.core.App;
+import br.academic.utils.validations.*;
 import br.academic.utils.events.*;
 
 public class EventsReportsView {
@@ -20,13 +21,7 @@ public class EventsReportsView {
         System.out.println("3 - Show all events from a type");
         System.out.print("\nChoose an option: ");
             
-        do {
-            option = App.sc.nextInt();
-            App.sc.nextLine();
-
-            if(option < 0 || option > 3) System.out.print("Invalid value. Digit again: ");
-
-        } while(option < 0 || option > 3);
+        option = InputInt.scanInt(0,3);
 
         switch(option) {
             case 1: {
@@ -37,10 +32,9 @@ public class EventsReportsView {
 
                 do {
                     
-                    event = App.ev.searchEvent(App.sc.nextInt());
-                    App.sc.nextLine();
+                    event = App.ev.searchEvent(InputInt.scanInt());
 
-                    if(event == null) System.out.print("Invalid ID. Digit again: ");
+                    if(event == null) System.out.print("Event not found. Digit again: ");
 
                 } while(event == null);
 
@@ -57,7 +51,7 @@ public class EventsReportsView {
                 App.clearScreen();
                 System.out.print("\nInsert the event's date: ");
 
-                App.ev.showEventsByDate(App.sc.nextLine());
+                App.ev.showEventsByDate(DateValidation.getValidDateInput());
 
                 System.out.println("\nPress enter to return.");
                 App.sc.nextLine();

@@ -17,14 +17,25 @@ public class AcademicFair extends Events {
     @Override
     public void display() {
         super.display();
-        System.out.println("\nOpen to public: " + openToPublic + "\nNumber of organizations: " + numberOfOrganizations + "\n");
+        System.out.println("Open to public: " + (openToPublic ? "Yes" : "No") + " / Number of organizations: " + numberOfOrganizations + "\n");
     }
 
     public boolean subscribePerson(Person person) {
         if(openToPublic == false)
-            if((person instanceof External)) return false;
-        if(!(registered.size() < maxParticipants)) return false; 
+            if((person instanceof External)) {
+                System.err.println("Error: The person is an external and the event is close for public.");
+                return false;
+            }
+        if(!(registered.size() < maxParticipants)){
+            System.err.println("Error: The event is already at full capacity.");
+            return false;
+        } 
+        if (registered.containsKey(person.getCPF())) { 
+        System.err.println("Error: Person is already subscribed to this academic fair.");
+        return false;
+        }
         registered.put(person.getCPF(), person);
+
         return true;
     }
 }

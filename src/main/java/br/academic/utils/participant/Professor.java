@@ -5,9 +5,4 @@ public class Professor extends Person {
     public Professor(String name, String email, String CPF) {
         super(name, email, CPF);
     }
-
-    @Override
-    public String getCategory() {
-        return "Professor";
-    }
 }

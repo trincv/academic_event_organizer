@@ -17,13 +17,25 @@ public class Course extends Events {
     @Override
     public void display() {
         super.display();
-        System.out.println("\nProfessor: " + professorCourse.getName() + "\nDuration: " + durationCourse + "\n");
+        System.out.println("Professor: " + professorCourse.getName() + " / Duration: " + durationCourse + "\n");
     }
 
     public boolean subscribePerson(Person person) {
-        if(!(person instanceof Student)) return false;
-        if(!(registered.size() < maxParticipants)) return false; 
+        if(!(person instanceof Student)){
+            System.err.println("Error: The person isn's a student so it can't participate the course.");
+            return false;
+        }
+        if(!(registered.size() < maxParticipants)) {
+            System.err.println("Error: The event is already at full capacity.");
+            return false;
+        } 
+        if (registered.containsKey(person.getCPF())) { 
+        System.err.println("Error: Person is already subscribed to this course.");
+        return false;
+        }
+
         registered.put(person.getCPF(), person);
+
         return true;
     }
 }
